@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POWER TECH Electronic Solutions</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 60px;
+      background-color: #111;
+      border-bottom: 1px solid rgba(39, 238, 242, 0.18);
+      font-size: 14px;
+      color: #fff;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .top-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #27eef2;
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: #ccc;
+    }
+
+    .top-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 180px;
+    }
+
+    .top-item strong {
+      font-size: 13px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: #000;
+      border-bottom: 1px solid #27eef2;
+      z-index: 1000;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      border: 3px solid #27eef2;
+      background-color: #111;
+      box-shadow: 0 0 18px rgba(39, 238, 242, 0.25);
+      overflow: hidden;
+    }
+
+    .logo-circle img {
+      width: 60%;
+      height: auto;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #27eef2;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 14px;
+      color: #ccc;
+      letter-spacing: 0.4px;
+    }
+
+    nav {
+      margin: 0 auto;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a,
+    .nav-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav a.active {
+      color: #27eef2;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #27eef2;
+      border-radius: 1px;
+    }
+
+    .nav-action {
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(39, 238, 242, 0.08);
+    }
+
+    .nav-action:hover,
+    nav a:hover {
+      color: #27eef2;
+      background: rgba(39, 238, 242, 0.12);
+    }
+
+    .nav-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      fill: currentColor;
+    }
+
+    nav a:hover {
+      color: #27eef2;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 60px;
+      gap: 40px;
+    }
+
+    .hero-text {
+      max-width: 45%;
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      margin-bottom: 22px;
+      line-height: 1.05;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    .hero-text button {
+      margin-top: 30px;
+      padding: 14px 34px;
+      border: none;
+      background-color: #27eef2;
+      color: #000;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 999px;
+      transition: 0.3s;
+    }
+
+    .hero-text button:hover {
+      background-color: #1bcbd0;
+    }
+
+/* About Section */
+.about-section {
+      padding: 80px 60px;
+      background: #020406;
+      color: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #27eef2;
+    }
+
+    .about-section h2 {
+      font-size: 42px;
+      margin: 0 0 20px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .about-section p {
+      max-width: 620px;
+      color: #bbb;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .highlight-card {
+      flex: 1 1 150px;
+      min-width: 150px;
+      background: rgba(39, 238, 242, 0.08);
+      border: 1px solid rgba(39, 238, 242, 0.15);
+      padding: 24px;
+      border-radius: 20px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-6px);
+      background: rgba(39, 238, 242, 0.14);
+    }
+
+    .highlight-card strong {
+      display: block;
+      font-size: 30px;
+      color: #27eef2;
+      margin-bottom: 10px;
+    }
+
+    .highlight-card span {
+      color: #dde4ea;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .about-image {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
+      background: #111;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      min-height: 420px;
+    }
+
+/* ၁။ Slider Container */
+.hero-slider {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ၂။ Slides Wrapper (ပုံ ၃ ပုံအတွက် 300%) */
+.hero-slider .slides {
+    display: flex;
+    width: 500%;
+    animation: slideLoop 25s infinite ease-in-out;
+}
+
+/* ၃။ Slide တစ်ခုချင်းစီ */
+.hero-slider .slide {
+    width: 100%;
+    min-height: 520px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-slider .slide-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-slider .slide-content {
+    padding: 20px 28px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+}
+
+.hero-slider .slide-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #27eef2;
+}
+
+.hero-slider .slide-text {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ၆။ Indicators Container */
+.hero-slider .slide-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* ၇။ Indicator Dot Styles */
+.hero-slider .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* ၈။ Indicators Animation Assign */
+.hero-slider .indicator:nth-child(1) { animation: indicator1 18s infinite; }
+.hero-slider .indicator:nth-child(2) { animation: indicator2 18s infinite; }
+.hero-slider .indicator:nth-child(3) { animation: indicator3 18s infinite; }
+.hero-slider .indicator:nth-child(4) { animation: indicator4 18s infinite; }
+.hero-slider .indicator:nth-child(5) { animation: indicator5 18s infinite; }
+
+/* ၉။ Keyframes for Slide Motion */
+@keyframes slideLoop {
+    0%, 20% { transform: translateX(0%); }
+    20%, 40% { transform: translateX(-20%); }
+    40%, 60% { transform: translateX(-40%); }
+    60%, 80% { transform: translateX(-60%); }
+    80%, 100% { transform: translateX(-80%); }
+}
+
+/* ၁၀။ Keyframes for Indicators Color */
+@keyframes indicator1 {
+    0%, 20%, 100% { background: #27eef2; opacity: 1; transform: scale(1.2); }
+    21%, 99% { background: rgba(255, 255, 255, 0.5); opacity: 0.65; transform: scale(1); }
+}
+
+@keyframes indicator2 {
+    0%, 32%, 53%, 100% { background: rgba(255, 255, 255, 0.5); opacity: 0.65; transform: scale(1); }
+    33%, 53% { background: #27eef2; opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes indicator3 {
+    0%, 65%, 86%, 100% { background: rgba(255, 255, 255, 0.5); opacity: 0.65; transform: scale(1); }
+    66%, 86% { background: #27eef2; opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes indicator4 {
+    0%, 80%, 100% { background: rgba(255, 255, 255, 0.5); opacity: 0.65; transform: scale(1); }
+    81%, 100% { background: #27eef2; opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes indicator5 {
+    0%, 80% { background: rgba(255, 255, 255, 0.5); opacity: 0.65; transform: scale(1); }
+    81%, 100% { background: #27eef2; opacity: 1; transform: scale(1.2); }
+}
+
+    .section {
+      padding: 60px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      color: #27eef2;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      color: #aaa;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .services-slider {
+      overflow: hidden;
+      margin-top: 40px;
+      padding: 0 60px 20px;
+      position: relative;
+    }
+
+    .service-track {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      transition: transform 0.7s ease;
+      will-change: transform;
+      padding-bottom: 14px;
+    }
+
+    .service-card {
+      background-color: #111;
+      border-radius: 28px;
+      overflow: hidden;
+      min-width: 320px;
+      width: 320px;
+      transition: transform 0.45s ease, box-shadow 0.45s ease, opacity 0.45s ease;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-rows: 220px auto;
+    }
+
+    .service-card:not(.center) {
+      opacity: 0.72;
+      transform: scale(0.9);
+    }
+
+    .service-card.center {
+      opacity: 1;
+      transform: scale(1.05);
+      box-shadow: 0 28px 68px rgba(0, 0, 0, 0.32);
+      border-color: rgba(39, 238, 242, 0.3);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 28px 58px rgba(0, 0, 0, 0.35);
+      border-color: rgba(39, 238, 242, 0.35);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .service-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .service-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.28);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .service-dots span.active {
+      background: #27eef2;
+      transform: scale(1.2);
+    }
+
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card h3 {
+      margin: 0;
+      color: #27eef2;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .card p {
+      margin: 0;
+      color: #ccc;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .project-section {
+      padding: 80px 60px;
+      background-color: #060606;
+      color: #fff;
+    }
+
+    .project-intro {
+      max-width: 920px;
+      margin: 0 auto 45px;
+    }
+
+    .project-intro .project-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #27eef2;
+    }
+
+    .project-intro h2 {
+      font-size: 42px;
+      margin: 0;
+      line-height: 1.05;
+      color: #fff;
+      text-align: center;
+      color: #27eef2;
+    }
+
+    .project-intro p {
+      color: #bbb;
+      font-size: 16px;
+      margin-top: 16px;
+      line-height: 1.8;
+      text-align-last: center;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 26px 54px rgba(0, 0, 0, 0.45);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.03);
+      filter: brightness(0.9);
+    }
+
+    .project-card-content {
+      position: relative;
+      padding: 28px 24px 32px;
+      background: rgba(5, 12, 18, 0.92);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background 0.35s ease;
+      
+    }
+
+    .project-card:hover .project-card-content {
+      background: rgba(39, 238, 242, 0.15);
+    }
+
+    .project-card .project-tag {
+      display: inline-block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #27eef2;
+      transition: color 0.35s ease;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 20px;
+      color: #f5f8fb;
+      line-height: 1.3;
+      transition: color 0.35s ease;
+    }
+
+    .project-card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: #bfc9d2;
+      font-size: 14px;
+      line-height: 1.75;
+      transition: color 0.35s ease;
+    }
+
+    .project-card:hover .project-tag,
+    .project-card:hover h3,
+    .project-card:hover p {
+      color: #fff;
+    }
+
+    .project-card:hover h3 {
+      color: #27eef2;
+    }
+
+    .gallery-btn {
+      background: rgba(39, 238, 242, 0.1);
+      border: 1px solid rgba(39, 238, 242, 0.3);
+      color: #27eef2;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-btn:hover {
+      background: rgba(39, 238, 242, 0.2);
+      border-color: rgba(39, 238, 242, 0.5);
+    }
+
+    .project-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 42px;
+    }
+
+    .project-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      transition: background 0.3s;
+    }
+
+    .gallery-showcase-btn {
+      padding: 12px 24px;
+      border: 2px solid #27eef2;
+      background: transparent;
+      color: #27eef2;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gallery-showcase-btn:hover {
+      background: #27eef2;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(39, 238, 242, 0.3);
+    }
+
+    .gallery-showcase-btn.primary {
+      background: #27eef2;
+      color: #000;
+    }
+
+    .gallery-showcase-btn.primary:hover {
+      background: #1da8ab;
+      color: #fff;
+    }
+
+    /* Gallery Modal Styles */
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gallery-content {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10001;
+      transition: background 0.3s;
+    }
+
+    .gallery-close:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10001;
+      transition: all 0.3s;
+    }
+
+    .gallery-nav:hover {
+      background: rgba(39, 238, 242, 0.8);
+    }
+
+    .gallery-prev {
+      left: 20px;
+    }
+
+    .gallery-next {
+      right: 20px;
+    }
+
+    .gallery-image-container {
+      max-width: 80%;
+      max-height: 80vh;
+      position: relative;
+      text-align: center;
+    }
+
+    .gallery-image-container img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-info {
+      margin-top: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .gallery-info h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: #27eef2;
+    }
+
+    .gallery-info p {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: #ccc;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery-tag {
+      display: inline-block;
+      background: rgba(39, 238, 242, 0.2);
+      color: #27eef2;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gallery-thumbnails {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 25px;
+      max-width: 90%;
+      overflow-x: auto;
+    }
+
+    .thumbnail {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+
+    .thumbnail:hover,
+    .thumbnail.active {
+      border-color: #27eef2;
+      transform: scale(1.1);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #27eef2;
+      margin-top: 40px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="brand">
+    <div class="logo-circle">
+      <img src="{% static 'catalog/images/logo2.png' %}" alt="Logo">
+    </div>
+    <div class="brand-text">
+      <div class="brand-title">POWER TECH</div>
+      <div class="brand-subtitle">Factory Electrical Solutions</div>
+    </div>
+  </div>
+    <div class="top-right">
+      <div class="top-item">
+        <strong>Phone</strong>
+        <span>+95 9444013250</span>
+        <span>+95 9444013250</span>
+      </div>
+      <div class="top-item">
+        <strong>Email</strong>
+        <span>info@powertechmm.com</span>
+      </div>
+      <div class="top-item">
+        <strong>Address</strong>
+        <span>Padauk Street, Hmantan Region (5), Amarapura, Mandalay</span>
+      </div>
+    </div>
+  </div>
+
+<header>
+  
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="#" class="nav-action">
+      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"></path></svg>
+      Search
+    </a>
+    <a href="#" class="nav-action">
+      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+      Login
+    </a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Innovative Electronic Solutions for the Future</h1>
+    <p>
+      <span style="color: #27eef2;">POWER TECH</span> Electronics delivers cutting-edge industrial and consumer electronic solutions, integrating advanced automation, IoT, and smart manufacturing technologies to elevate your business performance.
+    </p>
+    <button onclick="scrollToSection('services')">Explore Services</button>
+  </div>
+  <div class="hero-slider">
+    <div class="slides">
+      <div class="slide">
+        <div class="slide-image" style="background-image: url('{% static 'catalog/images/s1.jpg' %}');"></div>
+        <div class="slide-content">
+          <div class="slide-title">Smart Factory Automation</div>
+          <div class="slide-text">Drive efficiency with industrial automation and real-time control systems.</div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-image" style="background-image: url('{% static 'catalog/images/s2.jpg' %}');"></div>
+        <div class="slide-content">
+          <div class="slide-title">Advanced IoT Solutions</div>
+          <div class="slide-text">Connect devices, monitor performance, and unlock smarter operations.</div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-image" style="background-image: url('{% static 'catalog/images/s3.jpg' %}');"></div>
+        <div class="slide-content">
+          <div class="slide-title">Precision Electrical Design</div>
+          <div class="slide-text">High-quality engineering for robust industrial and consumer electronics.</div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-image" style="background-image: url('{% static 'catalog/images/s4.jpg' %}');"></div>
+        <div class="slide-content">
+          <div class="slide-title">Smart Manufacturing</div>
+          <div class="slide-text">Integrate advanced technologies for next-generation production.</div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-image" style="background-image: url('{% static 'catalog/images/s5.jpg' %}');"></div>
+        <div class="slide-content">
+          <div class="slide-title">Innovative Solutions</div>
+          <div class="slide-text">Cutting-edge electronics for modern industry demands.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-indicators">
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="about-label">About Power Tech</div>
+      <h2>Trusted Industrial Electrical Solutions</h2>
+      <p>Power Tech combines factory electrical design, industrial automation, and IoT integration to deliver safer, smarter production systems with clear results.</p>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <strong>15+</strong>
+          <span>Years serving manufacturing and industrial clients.</span>
+        </div>
+        <div class="highlight-card">
+          <strong>120+</strong>
+          <span>Successful electrical and automation projects completed.</span>
+        </div>
+        <div class="highlight-card">
+          <strong>24/7</strong>
+          <span>Support for production facilities, installation, and maintenance.</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-image">
+      <img src="{% static 'catalog/images/s4.jpg' %}" alt="Power Tech industrial electrical solutions">
+    </div>
+  </div>
+</section>
+
+<section class="section services-section" id="services">
+  <h2>Our Services</h2>
+  <p>We provide a comprehensive range of electronic engineering and smart automation services tailored to modern industry needs.</p>
+  <div class="services-slider">
+    <div class="service-track" id="service-track">
+      {% for service in services %}
+      <div class="service-card{% if forloop.first %} center{% endif %}">
+        {% if service.image %}
+        <img class="card-image" src="{{ service.image.url }}" alt="{{ service.title }}">
+        {% else %}
+        {% if forloop.counter == 1 %}
+        <img class="card-image" src="{% static 'catalog/images/s4.jpg' %}" alt="{{ service.title }}">
+        {% elif forloop.counter == 2 %}
+        <img class="card-image" src="{% static 'catalog/images/s3.jpg' %}" alt="{{ service.title }}">
+        {% elif forloop.counter == 3 %}
+        <img class="card-image" src="{% static 'catalog/images/soft.jpg' %}" alt="{{ service.title }}">
+        {% elif forloop.counter == 4 %}
+        <img class="card-image" src="{% static 'catalog/images/s2.jpg' %}" alt="{{ service.title }}">
+        {% else %}
+        <img class="card-image" src="{% static 'catalog/images/2.jpg' %}" alt="{{ service.title }}">
+        {% endif %}
+        {% endif %}
+        <div class="card-content">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+      </div>
+      {% empty %}
+      <!-- Default services if none in database -->
+      <div class="service-card center">
+        <img class="card-image" src="{% static 'catalog/images/s4.jpg' %}" alt="Panel Design Service">
+        <div class="card-content">
+          <h3>Panel Design</h3>
+          <p>Smart industrial automation systems designed for efficiency and scalability.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="card-image" src="{% static 'catalog/images/s3.jpg' %}" alt="Installation of PLC Program">
+        <div class="card-content">
+          <h3>Installation of PLC Program</h3>
+          <p>Advanced IoT integration for real-time monitoring and control.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="card-image" src="{% static 'catalog/images/soft.jpg' %}" alt="VFD and Softstarter Installation">
+        <div class="card-content">
+          <h3>Installation of VFD and Softstarter</h3>
+          <p>Expert installation to maximize motor control, safety, and energy efficiency.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="card-image" src="{% static 'catalog/images/s4.jpg' %}" alt="System Maintenance">
+        <div class="card-content">
+          <h3>System Maintenance</h3>
+          <p>Preventive maintenance to keep your production systems running smoothly.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="card-image" src="{% static 'catalog/images/2.jpg' %}" alt="Factory Automation">
+        <div class="card-content">
+          <h3>Factory Automation</h3>
+          <p>End-to-end automation solutions for higher productivity and reliability.</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="service-dots" id="service-dots">
+      {% for service in services %}
+      <span{% if forloop.first %} class="active"{% endif %}></span>
+      {% empty %}
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="project-section" id="projects">
+  <div class="project-intro">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+      <div>
+        <h2>Projects and Sites</h2>
+        <p>Discover our featured project portfolio, including infrastructure, road works, and construction sites built with precision and strong execution.</p>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <a href="{% url 'cement' %}" class="gallery-showcase-btn">View All Projects</a>
+        <button onclick="openFullGallery()" class="gallery-showcase-btn primary">Open Gallery</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-grid">
+    {% for project in projects %}
+    <article class="project-card" data-gallery-index="{{ forloop.counter0 }}">
+      {% if project.image %}
+      <img src="{{ project.image.url }}" alt="{{ project.title }}" onclick="openGallery({{ forloop.counter0 }})" style="cursor: pointer;">
+      {% else %}
+      {% if forloop.counter == 1 %}
+      <img src="{% static 'catalog/images/s1.jpg' %}" alt="{{ project.title }}" onclick="openGallery({{ forloop.counter0 }})" style="cursor: pointer;">
+      {% elif forloop.counter == 2 %}
+      <img src="{% static 'catalog/images/s2.jpg' %}" alt="{{ project.title }}" onclick="openGallery({{ forloop.counter0 }})" style="cursor: pointer;">
+      {% elif forloop.counter == 3 %}
+      <img src="{% static 'catalog/images/s3.jpg' %}" alt="{{ project.title }}" onclick="openGallery({{ forloop.counter0 }})" style="cursor: pointer;">
+      {% else %}
+      <img src="{% static 'catalog/images/s4.jpg' %}" alt="{{ project.title }}" onclick="openGallery({{ forloop.counter0 }})" style="cursor: pointer;">
+      {% endif %}
+      {% endif %}
+      <div class="project-card-content">
+        <span class="project-tag">{{ project.tag }}</span>
+        <h3>
+          {% if project.link_url %}
+          <a href="{{ project.link_url }}" target="_blank">{{ project.title }}</a>
+          {% else %}
+          {{ project.title }}
+          {% endif %}
+        </h3>
+        <p>{{ project.description }}</p>
+        <button class="gallery-btn" onclick="openGallery({{ forloop.counter0 }})">View Gallery</button>
+      </div>
+    </article>
+    {% empty %}
+    <!-- Default projects if none in database -->
+    <article class="project-card">
+      <img src="{% static 'catalog/images/s1.jpg' %}" alt="Cement Factory Site">
+      <div class="project-card-content">
+        <span class="project-tag">Cement Factory Project</span>
+        <h3><a href="{% url 'cement' %}">Cement Factory Site Development</a></h3>
+        <p>A state-of-the-art cement factory site designed for efficient production and environmental sustainability.</p>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <img src="{% static 'catalog/images/s2.jpg' %}" alt="Kalay Phalan Harkhar Road Bar Bridge">
+      <div class="project-card-content">
+        <span class="project-tag">Cartoon Snack Factory</span>
+        <h3><a href="home.html">Snack Project</a></h3>
+        <p>Major road infrastructure enhancing goods movement and local connectivity.</p>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <img src="{% static 'catalog/images/s3.jpg' %}" alt="Kalay Phalan Harkhar Road">
+      <div class="project-card-content">
+        <span class="project-tag">Electrical Project</span>
+        <h3><a href="cement.html">BEER Factory Project</a></h3>
+        <p>Highway construction delivering smooth travel through challenging terrain.</p>
+      </div>
+    </article>
+
+    
+    {% endfor %}
+  </div>
+
+  <div class="project-dots">
+    <span class="active"></span>
+    <span></span>
+  </div>
+</section>
+
+<!-- Gallery Modal -->
+<div id="gallery-modal" class="gallery-modal">
+  <div class="gallery-overlay" onclick="closeGallery()"></div>
+  <div class="gallery-content">
+    <button class="gallery-close" onclick="closeGallery()">&times;</button>
+    <button class="gallery-nav gallery-prev" onclick="navigateGallery(-1)">&#10094;</button>
+    <button class="gallery-nav gallery-next" onclick="navigateGallery(1)">&#10095;</button>
+    
+    <div class="gallery-image-container">
+      <img id="gallery-image" src="" alt="">
+      <div class="gallery-info">
+        <h3 id="gallery-title"></h3>
+        <p id="gallery-description"></p>
+        <span id="gallery-tag" class="gallery-tag"></span>
+      </div>
+    </div>
+    
+    <div class="gallery-thumbnails" id="gallery-thumbnails">
+      <!-- Thumbnails will be dynamically generated by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <p>© 2026 POWER TECH Electronics. All Rights Reserved.</p>
+</footer>
+
+<script>
+  const serviceTrack = document.getElementById('service-track');
+  const serviceDots = document.querySelectorAll('#service-dots span');
+  const serviceCards = Array.from(serviceTrack.children);
+  const cardSpacing = 24;
+  let activeIndex = 0;
+
+  function updateServiceSlider() {
+    const cardWidth = serviceCards[0].offsetWidth + cardSpacing;
+    const containerWidth = serviceTrack.parentElement.offsetWidth;
+    const offset = (containerWidth - serviceCards[0].offsetWidth) / 2;
+    serviceTrack.style.transform = `translateX(${offset - activeIndex * cardWidth}px)`;
+
+    serviceCards.forEach((card, index) => {
+      card.classList.toggle('center', index === activeIndex);
+      card.classList.toggle('side', index !== activeIndex);
+    });
+
+    serviceDots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === activeIndex);
+    });
+  }
+
+  window.addEventListener('resize', () => {
+    updateServiceSlider();
+  });
+
+  updateServiceSlider();
+
+  setInterval(() => {
+    activeIndex = (activeIndex + 1) % serviceCards.length;
+    updateServiceSlider();
+  }, 4500);
+
+// Smooth scrolling navigation
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        const headerOffset = 100; // Account for sticky header
+        const elementPosition = targetSection.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Update active nav link
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+
+  // Update active navigation on scroll
+  const sections = document.querySelectorAll('section[id]');
+  
+  function updateActiveNav() {
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 150;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + sectionId) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav(); // Initial call
+});
+
+// Function for button clicks
+function scrollToSection(sectionId) {
+  const targetSection = document.getElementById(sectionId);
+  if (targetSection) {
+    const headerOffset = 100;
+    const elementPosition = targetSection.offsetTop;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Gallery functionality
+let currentProjectIndex = 0;
+let currentImageIndex = 0;
+let galleryProjects = [];
+
+function initializeGallery() {
+  // Collect all project data for the gallery
+  galleryProjects = [];
+  {% for project in projects %}
+  galleryProjects.push({
+    title: "{{ project.title|escapejs }}",
+    description: "{{ project.description|escapejs }}",
+    tag: "{{ project.tag|escapejs }}",
+    mainImage: "{% if project.image %}{{ project.image.url }}{% else %}{% if forloop.counter == 1 %}{% static 'catalog/images/s1.jpg' %}{% elif forloop.counter == 2 %}{% static 'catalog/images/s2.jpg' %}{% elif forloop.counter == 3 %}{% static 'catalog/images/s3.jpg' %}{% else %}{% static 'catalog/images/s4.jpg' %}{% endif %}{% endif %}",
+    galleryImages: [
+      {% for gallery_image in project.gallery_images.all %}
+      {
+        url: "{{ gallery_image.image.url }}",
+        title: "{{ gallery_image.title|default:project.title|escapejs }}",
+        description: "{{ gallery_image.description|default:project.description|escapejs }}",
+        order: {{ gallery_image.order }}
+      }{% if not forloop.last %},{% endif %}
+      {% empty %}
+      // If no gallery images, use the main project image
+      {
+        url: "{% if project.image %}{{ project.image.url }}{% else %}{% if forloop.counter == 1 %}{% static 'catalog/images/s1.jpg' %}{% elif forloop.counter == 2 %}{% static 'catalog/images/s2.jpg' %}{% elif forloop.counter == 3 %}{% static 'catalog/images/s3.jpg' %}{% else %}{% static 'catalog/images/s4.jpg' %}{% endif %}{% endif %}",
+        title: "{{ project.title|escapejs }}",
+        description: "{{ project.description|escapejs }}",
+        order: 0
+      }
+      {% endfor %}
+    ].sort((a, b) => a.order - b.order) // Sort by order
+  });
+  {% empty %}
+  // Default projects if none in database
+  galleryProjects.push({
+    title: "Cement Factory Site Development",
+    description: "A state-of-the-art cement factory site designed for efficient production and environmental sustainability.",
+    tag: "Cement Factory Project",
+    mainImage: "{% static 'catalog/images/s1.jpg' %}",
+    galleryImages: [{
+      url: "{% static 'catalog/images/s1.jpg' %}",
+      title: "Cement Factory Site Development",
+      description: "A state-of-the-art cement factory site designed for efficient production and environmental sustainability.",
+      order: 0
+    }]
+  });
+  {% endfor %}
+}
+
+function openGallery(index) {
+  currentProjectIndex = index;
+  currentImageIndex = 0; // Start with first image of the project
+  const modal = document.getElementById('gallery-modal');
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  showGalleryImage(currentImageIndex);
+}
+
+function openFullGallery() {
+  // Create a combined gallery with all images from all projects
+  let allImages = [];
+  galleryProjects.forEach((project, projectIdx) => {
+    project.galleryImages.forEach((image, imageIdx) => {
+      allImages.push({
+        ...image,
+        projectIndex: projectIdx,
+        imageIndex: imageIdx,
+        projectTitle: project.title,
+        projectTag: project.tag,
+        projectDescription: project.description
+      });
+    });
+  });
+
+  if (allImages.length === 0) return;
+
+  // Temporarily replace the current gallery with full gallery
+  const originalProjects = [...galleryProjects];
+  galleryProjects = [{
+    title: "All Projects Gallery",
+    description: "Browse all gallery images from all projects",
+    tag: "Full Gallery",
+    galleryImages: allImages
+  }];
+
+  currentProjectIndex = 0;
+  currentImageIndex = 0;
+
+  const modal = document.getElementById('gallery-modal');
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  showGalleryImage(currentImageIndex);
+
+  // Store original projects for restoration
+  modal.setAttribute('data-full-gallery', 'true');
+  modal.setAttribute('data-original-projects', JSON.stringify(originalProjects));
+}
+
+function closeGallery() {
+  const modal = document.getElementById('gallery-modal');
+  const isFullGallery = modal.getAttribute('data-full-gallery') === 'true';
+
+  if (isFullGallery) {
+    // Restore original projects
+    const originalProjects = JSON.parse(modal.getAttribute('data-original-projects') || '[]');
+    galleryProjects = originalProjects;
+    modal.removeAttribute('data-full-gallery');
+    modal.removeAttribute('data-original-projects');
+  }
+
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function showGalleryImage(index) {
+  const project = galleryProjects[currentProjectIndex];
+  if (!project || !project.galleryImages.length) return;
+
+  // Wrap around within the current project's images
+  if (index < 0) index = project.galleryImages.length - 1;
+  if (index >= project.galleryImages.length) index = 0;
+
+  currentImageIndex = index;
+  const imageData = project.galleryImages[index];
+
+  document.getElementById('gallery-image').src = imageData.url;
+  document.getElementById('gallery-title').textContent = imageData.title;
+
+  // Handle full gallery vs project-specific gallery
+  const modal = document.getElementById('gallery-modal');
+  const isFullGallery = modal.getAttribute('data-full-gallery') === 'true';
+
+  if (isFullGallery) {s
+    // In full gallery, show the specific image's project info
+    document.getElementById('gallery-description').textContent = imageData.description || imageData.projectDescription;
+    document.getElementById('gallery-tag').textContent = imageData.projectTag;
+  } else {
+    // In project gallery, show the project's info
+    document.getElementById('gallery-description').textContent = imageData.description || project.description;
+    document.getElementById('gallery-tag').textContent = project.tag;
+  }
+
+  // Update thumbnail active state for current project
+  updateThumbnails(index);
+}
+
+function navigateGallery(direction) {
+  showGalleryImage(currentImageIndex + direction);
+}
+
+function updateThumbnails(activeImageIndex) {
+  const thumbnailsContainer = document.getElementById('gallery-thumbnails');
+  thumbnailsContainer.innerHTML = '';
+
+  const project = galleryProjects[currentProjectIndex];
+  project.galleryImages.forEach((image, index) => {
+    const thumbnail = document.createElement('div');
+    thumbnail.className = `thumbnail ${index === activeImageIndex ? 'active' : ''}`;
+    thumbnail.onclick = () => showGalleryImage(index);
+    const img = document.createElement('img');
+    img.src = image.url;
+    img.alt = image.title;
+    thumbnail.appendChild(img);
+    thumbnailsContainer.appendChild(thumbnail);
+  });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  const modal = document.getElementById('gallery-modal');
+  if (modal.style.display === 'block') {
+    if (e.key === 'Escape') {
+      closeGallery();
+    } else if (e.key === 'ArrowLeft') {
+      navigateGallery(-1);
+    } else if (e.key === 'ArrowRight') {
+      navigateGallery(1);
+    }
+  }
+});
+
+// Initialize gallery on page load
+document.addEventListener('DOMContentLoaded', function() {
+  initializeGallery();
+});
+</script>
+
+</body>
+</html>

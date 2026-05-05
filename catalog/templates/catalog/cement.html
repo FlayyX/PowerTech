@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POWER TECH Project Gallery</title>
+  {% load static %}
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #020304;
+      --surface: #0f1318;
+      --surface-strong: #141a21;
+      --text: #eef5fb;
+      --muted: #97a5b8;
+      --accent: #27eef2;
+      --accent-soft: rgba(39, 238, 242, 0.15);
+      --border: rgba(255, 255, 255, 0.05);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(39, 238, 242, 0.08), transparent 38%),
+                  linear-gradient(180deg, #05070a 0%, #090d12 40%, #030406 100%);
+      color: var(--text);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 60px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #000;
+      border: 2px solid rgba(39, 238, 242, 0.35);
+      display: grid;
+      place-items: center;
+    }
+
+    .brand-logo img {
+      width: 42px;
+      height: auto;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 4px;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 800;
+    }
+
+    .brand-subtitle {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav a {
+      font-size: 15px;
+      color: var(--muted);
+      transition: color 0.25s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+      padding: 48px 0 40px;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 12px;
+      color: #61f1ff;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 26px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 18px;
+      font-size: clamp(3rem, 3.4vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 580px;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .button,
+    .button-secondary {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 28px;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #1af3ff, #0af5c8);
+      color: #041014;
+      box-shadow: 0 18px 45px rgba(39, 238, 242, 0.22);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .button:hover,
+    .button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      max-height: 380px;
+    }
+
+    .hero-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 280px;
+      max-height: 360px;
+    }
+
+    .project-section {
+      margin-top: 40px;
+    }
+
+    .project-heading {
+      margin-bottom: 22px;
+    }
+
+    .project-heading h2 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .project-description {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    .album-grid {
+      display: flex;
+      gap: 22px;
+      margin-top: 24px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .album-grid::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .album-grid::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 999px;
+    }
+
+    .album-grid::-webkit-scrollbar-thumb {
+      background: rgba(39, 238, 242, 0.25);
+      border-radius: 999px;
+    }
+
+    .gallery-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+      min-width: min(360px, calc(100% - 22px));
+      flex: 0 0 360px;
+      scroll-snap-align: start;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(39, 238, 242, 0.24);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .gallery-card-content {
+      padding: 22px;
+    }
+
+    .gallery-card-title {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: #f5fbff;
+    }
+
+    .gallery-card-text {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.97rem;
+    }
+
+    .gallery-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(39, 238, 242, 0.12);
+      color: #8df9ff;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 52px 0 22px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar,
+      .hero {
+        gap: 18px;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.8rem;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="{% static 'catalog/images/logo2.png' %}" alt="Power Tech Logo">
+        </div>
+        <div class="brand-text">
+          <p class="brand-title">Power Tech</p>
+          <p class="brand-subtitle">Project Showcase</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="cement.html" class="active">Projects</a>
+        <a href="voltex-electrical.html">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Project Gallery</span>
+        <h1>Professional project visuals for modern industrial work.</h1>
+        <p>Explore a curated portfolio of completed plant installations, automation builds, and production site deliveries. Each image demonstrates our commitment to clean execution, technical quality, and strong electrical design.</p>
+        <div class="hero-actions">
+          <a class="button" href="#portfolio">View Gallery</a>
+          <a class="button-secondary" href="#contact">Request Consultation</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-panel">
+          <img src="{% static 'catalog/images/1.jpg' %}" alt="Project overview image">
+        </div>
+      </div>
+    </section>
+
+    <div class="section-heading" id="portfolio">
+      <div>
+        <h2>Featured Project Photos</h2>
+        <p>High-resolution images from our latest site deployments, factory builds, and electrical installations. Designed for clear presentation and professional impact.</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      {% for project in projects %}
+      <div class="project-heading">
+        <span class="gallery-badge">{{ project.tag }}</span>
+        <h2>{{ project.title }}</h2>
+        {% if project.description %}
+        <p class="project-description">{{ project.description }}</p>
+        {% endif %}
+      </div>
+
+      <div class="album-grid">
+        {% if project.gallery_images.all %}
+          {% for image in project.gallery_images.all %}
+          <article class="gallery-card">
+            <img src="{{ image.image.url }}" alt="{{ image.title|default:project.title }}">
+            <div class="gallery-card-content">
+              <span class="gallery-badge">{{ project.tag }}</span>
+              <h3 class="gallery-card-title">{{ image.title|default:project.title }}</h3>
+              <p class="gallery-card-text">{{ image.description|default:project.description }}</p>
+            </div>
+          </article>
+          {% endfor %}
+        {% else %}
+          <article class="gallery-card">
+            {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            {% else %}
+            <img src="{% static 'catalog/images/4.jpg' %}" alt="{{ project.title }}">
+            {% endif %}
+            <div class="gallery-card-content">
+              <span class="gallery-badge">{{ project.tag }}</span>
+              <h3 class="gallery-card-title">{{ project.title }}</h3>
+              <p class="gallery-card-text">{{ project.description }}</p>
+            </div>
+          </article>
+        {% endif %}
+      </div>
+      {% empty %}
+      <!-- Default projects if none in database -->
+      <article class="gallery-card">
+        <img src="{% static 'catalog/images/2.jpg' %}" alt="Factory panel installation">
+        <div class="gallery-card-content">
+          <span class="gallery-badge">Control Panel</span>
+          <h3 class="gallery-card-title">Factory Control Room</h3>
+          <p class="gallery-card-text">A premium control panel layout installed for motor and process automation. Clean wiring and modern component placement highlight our quality standards.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <img src="{% static 'catalog/images/3.jpg' %}" alt="Electrical assembly">
+        <div class="gallery-card-content">
+          <span class="gallery-badge">Assembly</span>
+          <h3 class="gallery-card-title">Electrical Assembly</h3>
+          <p class="gallery-card-text">Precision electrical assembly featuring organized cable management and robust switchgear solutions for heavy equipment environments.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <img src="{% static 'catalog/images/4.jpg' %}" alt="Site infrastructure">
+        <div class="gallery-card-content">
+          <span class="gallery-badge">Site Work</span>
+          <h3 class="gallery-card-title">Project Site Infrastructure</h3>
+          <p class="gallery-card-text">Infrastructure works supporting industrial sites and cement plant facilities, completed with safety and durability in mind.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <img src="{% static 'catalog/images/5.jpg' %}" alt="Automation rack">
+        <div class="gallery-card-content">
+          <span class="gallery-badge">Automation</span>
+          <h3 class="gallery-card-title">Automation Rack</h3>
+          <p class="gallery-card-text">Installed automation racks showing PLC cabinets, human-machine interface panels, and integrated power distribution systems.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <img src="{% static 'catalog/images/7.jpg' %}" alt="Electrical room display">
+        <div class="gallery-card-content">
+          <span class="gallery-badge">Electrical Room</span>
+          <h3 class="gallery-card-title">Clean Electrical Room</h3>
+          <p class="gallery-card-text">High-quality electrical room execution with tidy layouts, durable conduits, and easy service access for operators.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <img src="{% static 'catalog/images/8.jpg' %}" alt="Industrial installation">
+        <div class="gallery-card-content">
+          <span class="gallery-badge">Installation</span>
+          <h3 class="gallery-card-title">Industrial Installation</h3>
+          <p class="gallery-card-text">Heavy-duty installation visuals from industrial environments, demonstrating our capability in large-scale projects.</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <footer id="contact" style="margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.08); color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.95rem;">
+      <p>© 2026 POWER TECH Electronic Solutions</p>
+      <p>Contact: +95 882299923 | ChanMyathazi Township, Mandalay</p>
+    </footer>
+  </div>
+</body>
+</html>

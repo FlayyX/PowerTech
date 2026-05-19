@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-lwy0l#x&&38ee*j2un!223axu9+nrmt=63i!xmgjv6=s0q_@0k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['powertech.onrender.com', 'localhost', '127.0.0.1']
-
+# ALLOWED_HOSTS = ['powertech.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['powertechmdy.com', 'www.powertechmdy.com', '.onrender.com']
 
 # Application definition
 

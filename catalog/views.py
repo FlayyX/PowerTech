@@ -23,3 +23,7 @@ def cement(request):
         'projects': projects,
     }
     return render(request, 'catalog/cement.html', context)
+
+
+def contact_view(request):
+    return render(request, 'catalog/contact.html')
